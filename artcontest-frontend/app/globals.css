@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0b;
+  --foreground: #ffffff;
+  --card: #1a1a1b;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1b;
+  --popover-foreground: #ffffff;
+  --primary: #f19146;
+  --primary-foreground: #0a0a0b;
+  --secondary: #0ea5e9;
+  --secondary-foreground: #ffffff;
+  --muted: #2a2a2b;
+  --muted-foreground: #a1a1aa;
+  --accent: #d946ef;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #3a3a3b;
+  --input: #2a2a2b;
+  --ring: #f19146;
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: var(--foreground);
+  background: linear-gradient(135deg, #0a0a0b 0%, #1a1a1b 50%, #2a1a0b 100%);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  min-height: 100vh;
+}
+
+/* 竞赛主题样式 */
+.contest-glow {
+  box-shadow: 0 0 20px rgba(241, 145, 70, 0.3);
+}
+
+.contest-card {
+  background: linear-gradient(145deg, #1a1a1b, #2a2a2b);
+  border: 1px solid rgba(241, 145, 70, 0.2);
+  transition: all 0.3s ease;
+}
+
+.contest-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(241, 145, 70, 0.2);
+  border-color: rgba(241, 145, 70, 0.4);
+}
+
+.contest-button {
+  background: linear-gradient(135deg, #f19146, #ed7420);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contest-button:hover {
+  background: linear-gradient(135deg, #ed7420, #de5c16);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(241, 145, 70, 0.4);
+}
+
+.contest-button:active {
+  transform: translateY(0);
+}
+
+.contest-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.contest-button:hover::before {
+  left: 100%;
+}
+
+.trophy-gradient {
+  background: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rank-badge {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.category-tag {
+  background: linear-gradient(135deg, #d946ef, #c026d3);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-block;
+  margin: 0.125rem;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.contest-header {
+  background: linear-gradient(135deg, rgba(241, 145, 70, 0.1), rgba(14, 165, 233, 0.1));
+  border-bottom: 1px solid rgba(241, 145, 70, 0.2);
+}
+
+.contest-nav-link {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.contest-nav-link:hover {
+  color: #f19146;
+}
+
+.contest-nav-link.active {
+  color: #f19146;
+}
+
+.contest-nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #f19146, #ed7420);
+}
+
+/* 环形导航样式 */
+.nav-orb {
+  @apply w-16 h-16 bg-gray-800 border-2 border-gray-600 rounded-full flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-110 hover:border-orange-400 hover:bg-gray-700 hover:shadow-lg;
+}
+
+.nav-orb-active {
+  @apply border-orange-400 bg-gradient-to-br from-orange-600 to-orange-700 text-white shadow-lg;
+}
+
+.nav-orb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(251, 146, 60, 0.5);
+}
+
+/* 艺术品展示网格 */
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.artwork-card {
+  @apply relative bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700 transition-all duration-500 hover:scale-105 hover:shadow-2xl;
+  background-image: radial-gradient(circle at 20% 20%, rgba(251, 146, 60, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+}
+
+.artwork-card:hover {
+  border-color: rgba(251, 146, 60, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(251, 146, 60, 0.2);
+}
+
+.artwork-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(251, 146, 60, 0.05), transparent);
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.artwork-card:hover::before {
+  opacity: 1;
+}
+
+/* 作品信息展示 */
+.artwork-info {
+  @apply relative z-10;
+}
+
+.artwork-hash {
+  @apply bg-gray-900 border border-gray-600 rounded-lg p-3 font-mono text-xs break-all relative overflow-hidden;
+}
+
+.artwork-hash::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(251, 146, 60, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.artwork-hash:hover::before {
+  left: 100%;
+}
+
+/* 标签样式 */
+.tag-cloud {
+  @apply flex flex-wrap gap-2 mb-4;
+}
+
+.tag-item {
+  @apply bg-gradient-to-r from-gray-700 to-gray-600 px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:from-orange-600 hover:to-orange-500 hover:scale-105;
+}
+
+.category-badge {
+  @apply bg-gradient-to-r from-purple-600 to-pink-600 px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .contest-card {
+    margin: 0.5rem;
+  }
+  
+  .nav-orb {
+    @apply w-12 h-12 text-sm;
+  }
+  
+  .artwork-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #f19146, #ed7420);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ed7420, #de5c16);
+}
