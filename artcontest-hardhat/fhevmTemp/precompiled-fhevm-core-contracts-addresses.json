@@ -1,0 +1,6 @@
+{
+  "ACLAddress": "0x2Fb4341027eb1d2aD8B5D9708187df8633cAFA92",
+  "CoprocessorAddress": "0x05fD9B5EFE0a996095f42Ed7e77c390810CF660c",
+  "DecryptionOracleAddress": "0xc9990FEfE0c27D31D0C2AA36196b085c0c4d456c",
+  "KMSVerifierAddress": "0x1364cBBf2cDF5032C47d8226a6f6FBD2AFCDacAC"
+}
